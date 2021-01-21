@@ -1,3 +1,4 @@
+English Translation of several comments.
 NOTE: Program Language is Turkish, but It can be easily adopted and translated to other languages freely.
 
 # Serial-Communication-GUI-Program
