@@ -15,10 +15,10 @@ ports = [
 ]
 
 if not ports:
-    raise IOError("Seri Baglantili cihaz yok!")
+    raise IOError("No serial connected device!")
 
 if len(ports) > 1:
-    warnings.warn('Baglanildi....')
+    warnings.warn('Connected...')
 
 ser = serial.Serial(ports[0],9600)
 #port detection - end
@@ -66,7 +66,7 @@ class qt(QMainWindow):
         self.label_11.setText(ports[0])
 
     def loop_finished(self):
-        print('Looped Finished')
+        print('Loop Finished')
 
     def start_loop(self):
 
@@ -112,10 +112,10 @@ class qt(QMainWindow):
     # save settings
     def on_pushButton_4_clicked(self):
         if self.x != 0:
-            self.textEdit.setText('Ayarlar Kaydedildi!')
+            self.textEdit.setText('Settings Saved!')
         else:
             # print('hata')
-            self.textEdit.setText('Lütfen Port ve Hızı girin!')
+            self.textEdit.setText('Please enter Port and baud rate!')
 
     # TXT PRINT ------ SAVE
     def on_pushButton_5_clicked(self):
@@ -124,7 +124,7 @@ class qt(QMainWindow):
             f.write(my_text)
 
     def on_pushButton_2_clicked(self):
-        self.textEdit.setText('Durduruldu! Yeniden Baglanmak icin BAGLAN-a basin...')
+        self.textEdit.setText('Stopped! Press CONNECT to Reconnect...')
 
     def on_pushButton_clicked(self):
 
@@ -132,11 +132,11 @@ class qt(QMainWindow):
         while self.completed < 100:
             self.completed += 0.001
             self.progressBar.setValue(self.completed)
-        self.textEdit.setText('Veri Aliniyor...')
+        self.textEdit.setText('Receiving Data...')
 
         # self.label_5.setText('OK!')
 
-        self.label_5.setText("BAĞLANDI!")
+        self.label_5.setText("CONNECTED!")
         self.label_5.setStyleSheet('color: green')
         x = 1
         self.textEdit_3.setText(":")
