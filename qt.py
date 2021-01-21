@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QApplication, QComboBox, QDialog, QMainWindow, QWidg
     QListView
 from PyQt5.uic import loadUi
 
-#port tespit etme - baslangic
+#port detect - start
 ports = [
     p.device
     for p in serial.tools.list_ports.comports()
@@ -21,7 +21,7 @@ if len(ports) > 1:
     warnings.warn('Baglanildi....')
 
 ser = serial.Serial(ports[0],9600)
-#port tespit etme - son
+#port detection - end
 
 
 # class Foo(QThread):
@@ -109,7 +109,7 @@ class qt(QMainWindow):
     # print(self.comboBox_1.itemText(index1))
     # self.x = 1
 
-    # ayarlari kaydetme
+    # save settings
     def on_pushButton_4_clicked(self):
         if self.x != 0:
             self.textEdit.setText('Ayarlar Kaydedildi!')
@@ -117,7 +117,7 @@ class qt(QMainWindow):
             # print('hata')
             self.textEdit.setText('Lütfen Port ve Hızı girin!')
 
-    # TXT YAZDIRMA ------ KAYDETME
+    # TXT PRINT ------ SAVE
     def on_pushButton_5_clicked(self):
         with open('Sonuc.txt', 'w') as f:
             my_text = self.textEdit_3.toPlainText()
@@ -142,7 +142,7 @@ class qt(QMainWindow):
         self.textEdit_3.setText(":")
 
     def on_pushButton_3_clicked(self):
-        # serial porttan veri gonder:
+        # serial port send data:
         mytext = self.textEdit_2.toPlainText()
         print(mytext.encode())
         ser.write(mytext.encode())
